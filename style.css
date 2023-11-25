@@ -1,0 +1,29 @@
+body {
+  font-family: Arial;
+}
+
+.post-conatiner {
+  width: 400px;
+  height: 200px;
+  background-color: brown;
+}
+
+.photo {
+  width: 70px;
+}
+
+.photo-user {
+  display: flex;
+  align-items: center;
+}
+
+.user-name {
+  display: flex;
+  flex: 1;
+  justify-content: center;
+}
+
+.post-title {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
