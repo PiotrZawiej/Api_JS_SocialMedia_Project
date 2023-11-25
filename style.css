@@ -5,7 +5,8 @@ body {
 .post-conatiner {
   width: 400px;
   height: 200px;
-  background-color: brown;
+  background-color: #a52a2a;
+  border-radius: 10px;
 }
 
 .photo {
