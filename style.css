@@ -1,14 +1,18 @@
 body {
-  font-family: Arial;
+  font-family: Roboto;
   display: flex;
+  flex-direction: column;
   position: relative;
+  background: #ffffff;
+  margin-bottom: 0px;
 }
 
-.post-conatiner {
-  position: absolute;
+.post-conatainer {
   flex: 1;
+  max-width: 1000px;
+  background: #e7eaf6;
 
-  margin-top: 100px;
+  margin-top: 40px;
   margin-left: 20px;
   margin-right: 20px;
 
@@ -21,23 +25,29 @@ body {
 .photo {
   border-top-left-radius: 10px;
   width: 70px;
+  margin-top: 0;
+}
+
+.user-name {
+  display: flex;
+  align-items: center;
 }
 
 .photo-user {
   display: flex;
-  align-items: center;
 }
 
 .user-name {
   display: flex;
   flex: 1;
+  color: #113f67;
 
   font-size: 30px;
   font-weight: bold;
 
   padding-left: 20px;
   align-items: center;
-  color: gray;
+  background: #a2a8d3;
   height: 70px;
 
   border-bottom-style: solid;
@@ -52,10 +62,14 @@ body {
   padding-left: 20px;
   padding-right: 20px;
 
+  font-size: 20px;
   font-weight: 600;
+  color: #113f67;
 }
 
 .post-body {
+  color: #113f67;
+  font-size: 20px;
   padding-left: 20px;
   padding-right: 20px;
 }
