@@ -1,15 +1,3 @@
-body {
-  height: 100%;
-  font-family: Roboto;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  position: relative;
-  background: #ffffff;
-  margin-bottom: 0px;
-}
-
 .post-conatainer {
   flex: 1;
   max-width: 1000px;

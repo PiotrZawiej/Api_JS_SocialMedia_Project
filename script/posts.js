@@ -1,13 +1,12 @@
 import { fetchData } from "./ApiCall.js";
 
 fetchData().then(([posts, photos, users]) => {
-  for (let i = 0; i < posts.length; i++) {
+  for (let i = 0; i < 10; i++) {
     const randomIndex = Math.floor(Math.random() * posts.length);
 
     let post = posts[randomIndex];
     let photo = photos[randomIndex];
-    let userIndex = posts[randomIndex].userId;
-    let userId = users[userIndex].id;
+    let userIndex = posts[randomIndex].userId % users.length;
 
     let postContainerEl = document.createElement("div");
     postContainerEl.className = "post-conatainer";
@@ -22,7 +21,7 @@ fetchData().then(([posts, photos, users]) => {
 
     let userNameEl = document.createElement("div");
     userNameEl.className = "user-name";
-    userNameEl.textContent = users[userId].username;
+    userNameEl.textContent = users[userIndex].username;
 
     userPhotoEl.appendChild(postPhoto);
     userPhotoEl.appendChild(userNameEl);
