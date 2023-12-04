@@ -1,12 +1,15 @@
 import { fetchData } from "./ApiCall.js";
 
-fetchData().then(([posts, photos, users]) => {
-  for (let i = 0; i < 10; i++) {
-    const randomIndex = Math.floor(Math.random() * posts.length);
+const targetIpAddress = "desired.ip.address";
 
-    let post = posts[randomIndex];
-    let photo = photos[randomIndex];
-    let userIndex = posts[randomIndex].userId % users.length;
+fetchData().then(([posts, photos, users, comments]) => {
+  for (let i = 0; i < 10; i++) {
+    // const randomIndex = Math.floor(Math.random() * posts.length);
+
+    let post = posts[i];
+    let photo = photos[i];
+    let userIndex = posts[i].userId;
+    let commentIndex = posts[i].id;
 
     let postContainerEl = document.createElement("div");
     postContainerEl.className = "post-conatainer";
@@ -21,7 +24,7 @@ fetchData().then(([posts, photos, users]) => {
 
     let userNameEl = document.createElement("div");
     userNameEl.className = "user-name";
-    userNameEl.textContent = users[userIndex].username;
+    userNameEl.textContent = users[userIndex - 1].username;
 
     userPhotoEl.appendChild(postPhoto);
     userPhotoEl.appendChild(userNameEl);
@@ -39,8 +42,23 @@ fetchData().then(([posts, photos, users]) => {
     titleBodyEl.appendChild(postTitle);
     titleBodyEl.appendChild(postBody);
 
+    let feedback = document.createElement("div");
+    feedback.className = "feedback-constainer";
+
+    let commentsLink = document.createElement("div");
+    commentsLink.className = "comments-link";
+    commentsLink.textContent = "comments";
+
+    feedback.appendChild(commentsLink);
+
+    let commentsContainer = document.createElement("div");
+    commentsContainer.className = "commments-container";
+    commentsContainer.textContent = comments[commentIndex - 1].body;
+
     postContainerEl.appendChild(userPhotoEl);
     postContainerEl.appendChild(titleBodyEl);
+    postContainerEl.appendChild(feedback);
+    postContainerEl.appendChild(commentsContainer);
 
     document.body.appendChild(postContainerEl);
   }

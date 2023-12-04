@@ -26,6 +26,12 @@
 
 .photo-user {
   display: flex;
+  cursor: pointer;
+  transition: opacity 0.1s;
+}
+
+.photo-user:hover {
+  opacity: 0.7;
 }
 
 .user-name {
@@ -58,9 +64,38 @@
   color: #113f67;
 }
 
+.commments-container,
 .post-body {
   color: #113f67;
   font-size: 20px;
   padding-left: 20px;
   padding-right: 20px;
+}
+
+.feedback-constainer {
+  display: flex;
+
+  border-top: solid;
+  border-width: 0.01px;
+  border-color: rgb(197, 197, 197);
+
+  margin-top: 10px;
+  align-items: center;
+  justify-content: center;
+}
+
+.comments-link {
+  color: #113f67;
+  cursor: pointer;
+  font-size: 25px;
+  font-weight: bold;
+}
+
+.comments-link:hover {
+  opacity: 0.7;
+}
+
+.commments-container {
+  border-width: 0.1px;
+  margin-top: 10px;
 }

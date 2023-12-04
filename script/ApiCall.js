@@ -10,5 +10,9 @@ export async function fetchData() {
     (response) => response.json()
   );
 
-  return Promise.all([postPromise, photoPromise, userPromise]);
+  const commentsPromise = fetch(
+    "https://jsonplaceholder.typicode.com/comments"
+  ).then((response) => response.json());
+
+  return Promise.all([postPromise, photoPromise, userPromise, commentsPromise]);
 }
