@@ -10,7 +10,7 @@ fetchData().then(([posts, photos, users, comments]) => {
     let photo = photos[i];
     let userIndex = posts[i].userId;
     let commentIndex = posts[i].id;
-
+    
     let postContainerEl = document.createElement("div");
     postContainerEl.className = "post-conatainer";
 
@@ -50,11 +50,22 @@ fetchData().then(([posts, photos, users, comments]) => {
     commentsLink.textContent = "comments";
 
     feedback.appendChild(commentsLink);
+    
+    let j = 0
 
     let commentsContainer = document.createElement("div");
     commentsContainer.className = "commments-container";
-    commentsContainer.textContent = comments[commentIndex - 1].body;
 
+    while (j < comments.length && comments[j].postId !== posts[i].id) {
+      j += 1;
+    }
+    
+    if (j < comments.length) {
+      commentsContainer.textContent = comments[j].body;
+    }
+
+    
+    
     postContainerEl.appendChild(userPhotoEl);
     postContainerEl.appendChild(titleBodyEl);
     postContainerEl.appendChild(feedback);
