@@ -1,7 +1,6 @@
 import { fetchData } from "./ApiCall.js";
 
-const targetIpAddress = "desired.ip.address";
-
+let j = 0;
 fetchData().then(([posts, photos, users, comments]) => {
   for (let i = 0; i < 10; i++) {
     // const randomIndex = Math.floor(Math.random() * posts.length);
@@ -9,7 +8,6 @@ fetchData().then(([posts, photos, users, comments]) => {
     let post = posts[i];
     let photo = photos[i];
     let userIndex = posts[i].userId;
-    let commentIndex = posts[i].id;
     
     let postContainerEl = document.createElement("div");
     postContainerEl.className = "post-conatainer";
@@ -49,21 +47,14 @@ fetchData().then(([posts, photos, users, comments]) => {
     commentsLink.className = "comments-link";
     commentsLink.textContent = "comments";
 
-    feedback.appendChild(commentsLink);
-    
-    let j = 0
-
     let commentsContainer = document.createElement("div");
     commentsContainer.className = "commments-container";
 
-    while (j < comments.length && comments[j].postId !== posts[i].id) {
-      j += 1;
-    }
-    
-    if (j < comments.length) {
-      commentsContainer.textContent = comments[j].body;
-    }
+    commentsLink.addEventListener("click", () => {
+      showComends(commentsContainer);
+    })
 
+    feedback.appendChild(commentsLink);
     
     
     postContainerEl.appendChild(userPhotoEl);
@@ -72,5 +63,30 @@ fetchData().then(([posts, photos, users, comments]) => {
     postContainerEl.appendChild(commentsContainer);
 
     document.body.appendChild(postContainerEl);
+
+    async function showComends(Container){
+      while ((j < comments.length && comments[j].postId-1 !== posts[i].id)) {
+
+        
+        let commentContainer = document.createElement("div");
+        commentContainer.className = "commment-container";
+  
+        let commentsMail = document.createElement("div");
+        commentsMail.className = "comments-email";
+        commentsMail.textContent = comments[j].email;
+      
+        let commentsBody = document.createElement("div");
+        commentsBody.className = "comment-body";
+        commentsBody.textContent = comments[j].body;
+      
+        
+        commentContainer.appendChild(commentsMail);
+        commentContainer.appendChild(commentsBody);
+        Container.appendChild(commentContainer);
+        
+        j += 1;
+      }
+      Container.classList.toggle("show-all-comments")
+    }
   }
 });
