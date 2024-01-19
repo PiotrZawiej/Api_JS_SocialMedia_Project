@@ -8,9 +8,10 @@ fetchData().then(([posts, photos, users, comments]) => {
     let post = posts[i];
     let photo = photos[i];
     let userIndex = posts[i].userId;
-    // Branch-A chnages
-    // Branch-B changes
-    // Branch-C chnages
+
+    //AAAAAAAAAAAA
+    //yes
+>>>>>>> 21ef951 (yes)
     
     let postContainerEl = document.createElement("div");
     postContainerEl.className = "post-conatainer";
