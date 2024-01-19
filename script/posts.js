@@ -11,7 +11,6 @@ fetchData().then(([posts, photos, users, comments]) => {
 
     //AAAAAAAAAAAA
     //yes
->>>>>>> 21ef951 (yes)
     
     let postContainerEl = document.createElement("div");
     postContainerEl.className = "post-conatainer";
