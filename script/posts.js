@@ -9,6 +9,7 @@ fetchData().then(([posts, photos, users, comments]) => {
     let photo = photos[i];
     let userIndex = posts[i].userId;
     //AAAAAAAAAAAA
+    //yes
     
     let postContainerEl = document.createElement("div");
     postContainerEl.className = "post-conatainer";
@@ -79,6 +80,7 @@ fetchData().then(([posts, photos, users, comments]) => {
         let commentsBody = document.createElement("div");
         commentsBody.className = "comment-body";
         commentsBody.textContent = comments[j].body;
+        //yessdadasd
       
         
         commentContainer.appendChild(commentsMail);
