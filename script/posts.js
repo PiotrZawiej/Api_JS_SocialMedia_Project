@@ -1,65 +1,55 @@
-import { fetchData } from "./ApiCall.js";
+export function createAvatarElement(photo, user) {
+  let userPhotoEl = document.createElement("div");
+  userPhotoEl.className = "photo-user";
 
-const targetIpAddress = "desired.ip.address";
+  let postPhoto = document.createElement("img");
+  postPhoto.className = "photo";
+  postPhoto.src = photo.thumbnailUrl;
+  postPhoto.alt = photo.title;
 
-fetchData().then(([posts, photos, users, comments]) => {
-  for (let i = 0; i < 10; i++) {
-    // const randomIndex = Math.floor(Math.random() * posts.length);
+  let userNameEl = document.createElement("div");
+  userNameEl.className = "user-name";
+  userNameEl.textContent = user.username;
 
-    let post = posts[i];
-    let photo = photos[i];
-    let userIndex = posts[i].userId;
-    let commentIndex = posts[i].id;
+  userPhotoEl.appendChild(postPhoto);
+  userPhotoEl.appendChild(userNameEl);
 
-    let postContainerEl = document.createElement("div");
-    postContainerEl.className = "post-conatainer";
+  return userPhotoEl;
+}
 
-    let userPhotoEl = document.createElement("div");
-    userPhotoEl.className = "photo-user";
+export function createTitleBodyElement(post) {
+  let titleBodyEl = document.createElement("div");
 
-    let postPhoto = document.createElement("img");
-    postPhoto.className = "photo";
-    postPhoto.src = photo.thumbnailUrl;
-    postPhoto.alt = photo.title;
+  let postTitle = document.createElement("div");
+  postTitle.className = "post-title";
+  postTitle.textContent = post.title;
 
-    let userNameEl = document.createElement("div");
-    userNameEl.className = "user-name";
-    userNameEl.textContent = users[userIndex - 1].username;
+  let postBody = document.createElement("div");
+  postBody.className = "post-body";
+  postBody.textContent = post.body;
 
-    userPhotoEl.appendChild(postPhoto);
-    userPhotoEl.appendChild(userNameEl);
+  titleBodyEl.appendChild(postTitle);
+  titleBodyEl.appendChild(postBody);
 
-    let titleBodyEl = document.createElement("div");
+  return titleBodyEl;
+}
 
-    let postTitle = document.createElement("div");
-    postTitle.className = "post-title";
-    postTitle.textContent = post.title;
+export function createFeedbackElement() {
+  let feedback = document.createElement("div");
+  feedback.className = "feedback-constainer";
 
-    let postBody = document.createElement("div");
-    postBody.className = "post-body";
-    postBody.textContent = post.body;
+  let commentsLink = document.createElement("div");
+  commentsLink.className = "comments-link";
+  commentsLink.textContent = "comments";
 
-    titleBodyEl.appendChild(postTitle);
-    titleBodyEl.appendChild(postBody);
+  feedback.appendChild(commentsLink);
 
-    let feedback = document.createElement("div");
-    feedback.className = "feedback-constainer";
+  return feedback;
+}
 
-    let commentsLink = document.createElement("div");
-    commentsLink.className = "comments-link";
-    commentsLink.textContent = "comments";
+export function createCommentsContainer() {
+  let commentsContainer = document.createElement("div");
+  commentsContainer.className = "commments-container";
 
-    feedback.appendChild(commentsLink);
-
-    let commentsContainer = document.createElement("div");
-    commentsContainer.className = "commments-container";
-    commentsContainer.textContent = comments[commentIndex - 1].body;
-
-    postContainerEl.appendChild(userPhotoEl);
-    postContainerEl.appendChild(titleBodyEl);
-    postContainerEl.appendChild(feedback);
-    postContainerEl.appendChild(commentsContainer);
-
-    document.body.appendChild(postContainerEl);
-  }
-});
+  return commentsContainer;
+}
