@@ -1,69 +1,37 @@
+//posts.js
+
 import { fetchData } from "./ApiCall.js";
+import { createCommentsContainer } from "./CreateConatiner.js";
+import { createAvatarElement } from "./CreateConatiner.js";
+import { createTitleBodyElement } from "./CreateConatiner.js";
+import { createFeedbackElement } from "./CreateConatiner.js";
 
-let j = 0;
-fetchData().then(([posts, photos, users, comments]) => {
-  for (let i = 0; i < 10; i++) {
-    // const randomIndex = Math.floor(Math.random() * posts.length);
 
-    let post = posts[i];
-    let photo = photos[i];
-    let userIndex = posts[i].userId;
+
+    let post = posts[randomIndex];
+    let photo = photos[randomIndex]; // Fixed this line
+    let user = users[post.userId - 1]; // Fixed this line
+    let commentIndex = post.id;
 
     //AAAAAAAAAAAA
     //yes
     
-    let postContainerEl = document.createElement("div");
-    postContainerEl.className = "post-conatainer";
 
-    let userPhotoEl = document.createElement("div");
-    userPhotoEl.className = "photo-user";
 
-    let postPhoto = document.createElement("img");
-    postPhoto.className = "photo";
-    postPhoto.src = photo.thumbnailUrl;
-    postPhoto.alt = photo.title;
+    let commentsContainer = createCommentsContainer(); // Moved this line here
 
-    let userNameEl = document.createElement("div");
-    userNameEl.className = "user-name";
-    userNameEl.textContent = users[userIndex - 1].username;
+    while (commentIndex === comments.postId) {
+      if (commentIndex === comments.postId) {
+        commentsContainer.textContent = comments[commentIndex - 1].body;
+      } else {
+        commentIndex += 1;
+      }
+    }
 
-    userPhotoEl.appendChild(postPhoto);
-    userPhotoEl.appendChild(userNameEl);
-
-    let titleBodyEl = document.createElement("div");
-
-    let postTitle = document.createElement("div");
-    postTitle.className = "post-title";
-    postTitle.textContent = post.title;
-
-    let postBody = document.createElement("div");
-    postBody.className = "post-body";
-    postBody.textContent = post.body;
-
-    titleBodyEl.appendChild(postTitle);
-    titleBodyEl.appendChild(postBody);
-
-    let feedback = document.createElement("div");
-    feedback.className = "feedback-constainer";
-
-    let commentsLink = document.createElement("div");
-    commentsLink.className = "comments-link";
-    commentsLink.textContent = "comments";
-
-    let commentsContainer = document.createElement("div");
-    commentsContainer.className = "commments-container";
-
-    commentsLink.addEventListener("click", () => {
-      showComends(commentsContainer);
-    })
-
-    feedback.appendChild(commentsLink);
-    
-    
-    postContainerEl.appendChild(userPhotoEl);
-    postContainerEl.appendChild(titleBodyEl);
-    postContainerEl.appendChild(feedback);
-    postContainerEl.appendChild(commentsContainer);
+    postContainerEl.appendChild(createAvatarElement(photo, user)); // Fixed this line
+    postContainerEl.appendChild(createTitleBodyElement(post));
+    postContainerEl.appendChild(createFeedbackElement());
+    postContainerEl.appendChild(commentsContainer); // Fixed this line
 
     document.body.appendChild(postContainerEl);
 
@@ -93,4 +61,4 @@ fetchData().then(([posts, photos, users, comments]) => {
       Container.classList.toggle("show-all-comments")
     }
   }
-});
+};
