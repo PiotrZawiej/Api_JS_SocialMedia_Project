@@ -1,3 +1,4 @@
+//create Avatar Block
 export function createAvatarElement(photo, user) {
   let userPhotoEl = document.createElement("div");
   userPhotoEl.className = "photo-user";
@@ -17,6 +18,7 @@ export function createAvatarElement(photo, user) {
   return userPhotoEl;
 }
 
+//create Title Block
 export function createTitleBodyElement(post) {
   let titleBodyEl = document.createElement("div");
 
@@ -34,6 +36,7 @@ export function createTitleBodyElement(post) {
   return titleBodyEl;
 }
 
+//create feedback block
 export function createFeedbackElement() {
   let feedback = document.createElement("div");
   feedback.className = "feedback-constainer";
@@ -47,9 +50,11 @@ export function createFeedbackElement() {
   return feedback;
 }
 
-export function createCommentsContainer() {
+//create Comment Block
+export function createCommentsContainer(commentBody) {
   let commentsContainer = document.createElement("div");
-  commentsContainer.className = "commments-container";
+  commentsContainer.className = "commment-container";
+  commentsContainer.textContent = commentBody;
 
   return commentsContainer;
 }

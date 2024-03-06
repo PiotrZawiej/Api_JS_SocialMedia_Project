@@ -1,22 +1,18 @@
-.comments-email{
-    font-size: 15px;
-    margin-bottom: 5px;
-    color: gray;
+.comments-email {
+  font-size: 15px;
+  margin-bottom: 5px;
+  color: gray;
 }
 
-.comments-container{
-    margin-bottom: 0;
-    margin-top: -1px;
-    padding: 5px;
+.commment-container {
+  display: block;
+  padding-bottom: 10px;
+  color: #113f67;
+  align-items: center;
+  padding-left: 20px;
+  padding-right: 10px;
 }
 
-.commment-container{
-    display: block;
-    margin-bottom: 20px;
-    border-bottom: solid;
-    padding-bottom: 10px;
-}
-
-.show-all-comments{
-    display: none;
+.show-all-comments {
+  display: none;
 }
