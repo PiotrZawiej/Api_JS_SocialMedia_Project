@@ -7,6 +7,9 @@ import { createTitleBodyElement } from "./CreateConatiner.js";
 import { createFeedbackElement } from "./CreateConatiner.js";
 
 
+fetchData().then(([posts, photos, users, comments]) => {
+  for (let i = 0; i < 100; i++) {
+    const randomIndex = Math.floor(Math.random() * posts.length);
 
     let post = posts[randomIndex];
     let photo = photos[randomIndex]; // Fixed this line
