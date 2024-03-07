@@ -51,10 +51,17 @@ export function createFeedbackElement() {
 }
 
 //create Comment Block
-export function createCommentsContainer(commentBody) {
+export function createCommentsContainer(commentBody, userMail) {
   let commentsContainer = document.createElement("div");
   commentsContainer.className = "commment-container";
-  commentsContainer.textContent = commentBody;
+
+  let emailInfo = document.createElement("div");
+  emailInfo.textContent = userMail;
+  emailInfo.className = "comments-email";
+  commentsContainer.appendChild(emailInfo);
+
+  let commentText = document.createTextNode(commentBody);
+  commentsContainer.appendChild(commentText);
 
   return commentsContainer;
 }
