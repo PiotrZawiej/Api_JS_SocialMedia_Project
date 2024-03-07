@@ -19,8 +19,6 @@ fetchData().then(([posts, photos, users, comments]) => {
     let postContainerEl = document.createElement("div");
     postContainerEl.className = "post-conatainer";
 
-    console.log(findComment(comments, post));
-
     postContainerEl.appendChild(createAvatarElement(photo, user));
     postContainerEl.appendChild(createTitleBodyElement(post));
     postContainerEl.appendChild(createFeedbackElement());
